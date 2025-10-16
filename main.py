@@ -1,3 +1,4 @@
+import asyncio
 from playwright.sync_api import sync_playwright
 from telegram import Bot
 import json
@@ -48,7 +49,7 @@ def get_price(page, url):
     raise Exception("Price not found")
 
 def send(bot, text):
-    bot.send_message(chat_id=CHAT_ID, text=text)
+    asyncio.run(bot.send_message(chat_id=CHAT_ID, text=text))
 
 def main():
     bot = Bot(BOT_TOKEN)
